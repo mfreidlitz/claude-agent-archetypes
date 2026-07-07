@@ -83,6 +83,50 @@ python scripts/churn_report.py --stale-months 6 --top 20
 
 The `.spike` marker file that `spike.py` writes into each spike worktree is the integration point for verification hooks: a pre-commit or verify script can check for it and skip quality gates inside spikes, keeping the "throwaway means exempt" rule mechanical.
 
+## Example output
+
+What the scripts produce (output format is exact; file names and numbers below are illustrative):
+
+```
+$ python scripts/spike.py new payment-api-feasibility --question "Can provider X do refunds?"
+Spike worktree ready: /work/myrepo-spikes/payment-api-feasibility  (branch spike/payment-api-feasibility)
+Reminder: the deliverable is a findings note in docs/spikes/, not this code.
+
+$ python scripts/spike.py list
+payment-api-feasibility     3d  Can provider X do refunds?
+
+$ python scripts/spike.py reap --days 14
+reap candidate: payment-api-feasibility (17d old)
+Remove these worktrees and their branches? [y/N] y
+reaped: payment-api-feasibility
+```
+
+```
+$ python scripts/churn_report.py --stale-months 6 --top 20
+
+# Churn report (2026-07-07)
+
+Tracked files analyzed: 214. Staleness threshold: 6 months.
+
+## Stale files (untouched > 6 months)
+
+| File | Lines | Commits | Days since last touch |
+|---|---:|---:|---:|
+| src/legacy/export_v1.py | 412 | 2 | 391 |
+| src/utils/feature_flags.py | 88 | 1 | 240 |
+
+## Low-churn heavyweights (most lines per commit)
+
+| File | Lines | Commits | Lines/commit |
+|---|---:|---:|---:|
+| src/legacy/export_v1.py | 412 | 2 | 206 |
+| src/api/handlers.py | 350 | 14 | 25 |
+
+*Evidence, not verdicts: cross-check candidates against runtime usage before proposing removal.*
+```
+
+A typical Sweeper dispatch then reads the report, cross-checks the candidates (grep for imports, check logs), and returns an unship-list where every row carries its evidence.
+
 ## Customization
 
 The agents ship stack-agnostic. Per project, tighten three things:
