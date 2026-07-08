@@ -64,6 +64,8 @@ The repo doubles as a Claude Code plugin marketplace with two plugins:
 
 `code-archetypes` installs all five software subagents; `knowledge-archetypes` installs the three knowledge-work agents. They are separate plugins because three archetype names exist in both sets. Run `/agents` to confirm.
 
+Which plugin goes where: in Claude Code, `code-archetypes` is the primary install; add `knowledge-archetypes` too if you dispatch non-code work (research, content, analysis) from Code. In Claude Cowork, `knowledge-archetypes` is the one you want; install it through Cowork's plugin management, or use the three markdown files directly as agent definitions.
+
 ### Manual copy (per-project)
 
 Copy the five files into your repository's agent directory:
