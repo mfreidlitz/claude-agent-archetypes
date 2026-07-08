@@ -80,7 +80,7 @@ cp code-agents/*.md .claude/agents/
 
 ### Claude Cowork
 
-`knowledge-archetypes` is the one you want in Cowork. Install it through Cowork's plugin management (Settings > Capabilities), or use the three markdown files in `knowledge-agents/` directly as agent definitions in your own plugin. Adapt the context-loading instructions to point at your own project files.
+`knowledge-archetypes` is the one you want in Cowork. The easiest path: download `knowledge-archetypes.plugin` from the [Releases page](https://github.com/mfreidlitz/claude-agent-archetypes/releases) and install it through Cowork's plugin management (Settings > Capabilities). Alternatively, use the three markdown files in `knowledge-agents/` directly as agent definitions in your own plugin. Adapt the context-loading instructions to point at your own project files.
 
 The knowledge-work agents also work as pasted personas in any Claude conversation, no installation required.
 
