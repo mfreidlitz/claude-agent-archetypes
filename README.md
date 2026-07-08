@@ -28,6 +28,16 @@ He also noted the phase mix: pre-PMF work needs archetypes 1+2+3; growth with PM
 
 **No coordinator.** Each agent is self-contained per task. Orchestration stays with your main session (or with you).
 
+## When not to use each archetype
+
+The phase mix above says which energies a stage needs. This says where each archetype is the wrong tool, and who to dispatch instead.
+
+- **Prototyper** is not for changes you intend to keep. A spike is disposable by construction; if you want the result in production, that is Builder work behind a spec. Dispatch Builder, not Prototyper, once the question is already answered.
+- **Builder** is not for open questions. If the approach is unproven or an architecture decision is unmade, building locks in a guess. Spike it with the Prototyper first, or surface the decision to the human; Builder starts when the spec is a contract.
+- **Sweeper** is not for adding capability or redesigning. Its diff only ever shrinks the system. New behavior is Builder work; a different design is a spec decision for the human. Sweeper without a green verify suite to preserve is also premature.
+- **Grower** is not for pre-instrumentation products or missing features. With no data, its only valid output is an instrumentation proposal, not tweaks; a genuine capability gap routes to the spec flow for Builder, not into a growth iteration.
+- **Maintainer** is not for feature requests or growth work. Stewardship shrinks risk, not scope. Route new features to Builder, product iteration to Grower, and simplification passes to the Sweeper.
+
 ## What's in the box
 
 ```
