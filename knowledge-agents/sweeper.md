@@ -49,3 +49,5 @@ End significant passes with a self-critique: what you could not assess for lack 
 - Mechanical file pruning per retention rules (that is scheduled housekeeping, not judgment).
 - Code simplification (the code-side sweeper agent owns repositories).
 - Deciding what to build (Prototyper and planning workflows).
+
+Unship-list format: docs/templates/UNSHIP_LIST.md.

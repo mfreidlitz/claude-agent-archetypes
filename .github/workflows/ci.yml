@@ -33,6 +33,9 @@ jobs:
           print(f"OK: marketplace.json valid, {len(agents)} agent files with frontmatter")
           EOF
 
+      - name: Validate agent contracts and package integrity
+        run: python .github/scripts/validate_agents.py --root .
+
       - name: Smoke test spike.py
         run: |
           set -e

@@ -28,6 +28,16 @@ He also noted the phase mix: pre-PMF work needs archetypes 1+2+3; growth with PM
 
 **No coordinator.** Each agent is self-contained per task. Orchestration stays with your main session (or with you).
 
+## When not to use each archetype
+
+The phase mix above says which energies a stage needs. This says where each archetype is the wrong tool, and who to dispatch instead.
+
+- **Prototyper** is not for changes you intend to keep. A spike is disposable by construction; if you want the result in production, that is Builder work behind a spec. Dispatch Builder, not Prototyper, once the question is already answered.
+- **Builder** is not for open questions. If the approach is unproven or an architecture decision is unmade, building locks in a guess. Spike it with the Prototyper first, or surface the decision to the human; Builder starts when the spec is a contract.
+- **Sweeper** is not for adding capability or redesigning. Its diff only ever shrinks the system. New behavior is Builder work; a different design is a spec decision for the human. Sweeper without a green verify suite to preserve is also premature.
+- **Grower** is not for pre-instrumentation products or missing features. With no data, its only valid output is an instrumentation proposal, not tweaks; a genuine capability gap routes to the spec flow for Builder, not into a growth iteration.
+- **Maintainer** is not for feature requests or growth work. Stewardship shrinks risk, not scope. Route new features to Builder, product iteration to Grower, and simplification passes to the Sweeper.
+
 ## What's in the box
 
 ```
@@ -44,6 +54,8 @@ knowledge-agents/     knowledge-work counterparts (three archetypes; see below)
 scripts/
   spike.py            create/list/reap throwaway spike worktrees with a gate-exemption marker
   churn_report.py     git-history evidence (stale files, low-churn heavyweights) for the Sweeper
+docs/templates/       output-artifact format templates (Prototyper, Sweeper, Grower, Maintainer)
+docs/evals/           manual boundary-behavior scenarios, one per code archetype
 ```
 
 ### Why only three knowledge-work agents?
@@ -153,6 +165,16 @@ The agents ship stack-agnostic. Per project, tighten three things:
 3. **Performance budgets.** Sweeper and Maintainer work best against explicit numbers. If you have none, their first useful output is proposing some.
 
 Tool allowlists in each agent's frontmatter are deliberately minimal per archetype (the knowledge-work Prototyper and Grower, for instance, get no Edit access: they propose, they don't modify). Widen them consciously, not by default.
+
+## Verification and contributing
+
+The discipline each archetype promises is checkable, not just described:
+
+- **Output templates** in `docs/templates/` fix the shape of each agent's deliverable (spike findings, unship-list, experiment, health check). Each agent file points at its template.
+- **Eval scenarios** in `docs/evals/` are a manual protocol: one boundary-behavior scenario per code archetype, each testing that the agent refuses the out-of-bounds action and routes to the correct alternative. `docs/evals/README.md` has the pass/fail rubric.
+- **CI** (`.github/scripts/validate_agents.py`) enforces the agent contracts on every push: unique names, tool-allowlist policy (the knowledge Prototyper and Grower stay Edit/Write-free), a boundary marker in each agent body, and that the marketplace paths resolve.
+
+See [`CONTRIBUTING.md`](CONTRIBUTING.md) for what makes a good agent change, when tool allowlists may widen, how new archetype proposals are judged, and the release process. Changes are tracked in [`CHANGELOG.md`](CHANGELOG.md).
 
 ## License
 

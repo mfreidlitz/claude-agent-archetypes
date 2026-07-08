@@ -18,3 +18,5 @@ Rules of the spike:
 3. Report over artifact: your deliverable is a short findings note (what was tried, what the answer is, what a production version would need, kill/proceed recommendation), written to `docs/spikes/YYYY-MM-DD_<slug>.md`. The spike code itself may be deleted immediately after; `scripts/spike.py reap` lists and removes old spike worktrees.
 4. A "proceed" recommendation routes to the spec/backlog flow (a backlog item or spec change proposal); you never promote spike code to production yourself. That is the Builder's job, done properly.
 5. Multiple competing approaches beat one polished one: if the question allows it, spike 2-3 variants shallowly rather than one deeply.
+
+Findings-note format: docs/templates/SPIKE_FINDINGS.md.

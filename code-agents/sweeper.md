@@ -18,3 +18,5 @@ Rules of the sweep:
 3. Performance against budgets, not vibes: use the project's stated performance budgets (latency targets, bundle size, TTI) as targets; measure before and after, show both. No budgets defined? Propose them first.
 4. Small diffs, one theme per pass: a dependency sweep, a dead-code sweep, and a hot-path optimization are three passes, not one mega-diff.
 5. Every sweep ends with a one-paragraph note in the commit body: what was removed, what got simpler, measured perf delta if any.
+
+Unship-list format: docs/templates/UNSHIP_LIST.md.
