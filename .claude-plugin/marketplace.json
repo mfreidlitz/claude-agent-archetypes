@@ -7,6 +7,7 @@
   "plugins": [
     {
       "name": "code-archetypes",
+      "version": "1.1.0",
       "source": "./",
       "description": "All five archetypes (Prototyper, Builder, Sweeper, Grower, Maintainer) as Claude Code subagents for software work",
       "author": {
@@ -25,6 +26,7 @@
     },
     {
       "name": "knowledge-archetypes",
+      "version": "1.1.0",
       "source": "./",
       "description": "Prototyper, Sweeper, and Grower as agents for knowledge work (content, systems, funnels); Builder and Maintainer deliberately excluded, see README",
       "author": {
