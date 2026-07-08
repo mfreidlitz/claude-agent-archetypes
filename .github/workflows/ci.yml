@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Compile scripts
+        run: python -m py_compile scripts/spike.py scripts/churn_report.py
+
+      - name: Validate marketplace and agent JSON/frontmatter basics
+        run: |
+          python - <<'EOF'
+          import json, pathlib, sys
+          json.load(open(".claude-plugin/marketplace.json"))
+          agents = list(pathlib.Path("code-agents").glob("*.md")) + \
+                   list(pathlib.Path("knowledge-agents").glob("*.md"))
+          assert len(agents) == 8, f"expected 8 agent files, found {len(agents)}"
+          for a in agents:
+              text = a.read_text(encoding="utf-8")
+              assert text.startswith("---"), f"{a}: missing frontmatter"
+              assert "name:" in text.split("---")[1], f"{a}: missing name field"
+          print(f"OK: marketplace.json valid, {len(agents)} agent files with frontmatter")
+          EOF
+
+      - name: Smoke test spike.py
+        run: |
+          set -e
+          mkdir -p /tmp/smoke/repo && cd /tmp/smoke/repo
+          git init -q
+          git config user.email ci@example.com && git config user.name ci
+          cp -r "$GITHUB_WORKSPACE/scripts" .
+          echo hello > file.txt && git add -A && git commit -qm init
+          python scripts/spike.py new ci-spike --question "does CI work?"
+          python scripts/spike.py list | grep ci-spike
+          test -f ../repo-spikes/ci-spike/.spike
+          python scripts/spike.py reap --all --yes
+          python scripts/spike.py list | grep "No spikes."
+          echo "spike.py smoke test passed"
+
+      - name: Smoke test churn_report.py
+        run: |
+          set -e
+          cd /tmp/smoke/repo
+          python scripts/churn_report.py --stale-months 6 --top 5 > report.md
+          grep -q "# Churn report" report.md
+          grep -q "Tracked files analyzed" report.md
+          echo "churn_report.py smoke test passed"

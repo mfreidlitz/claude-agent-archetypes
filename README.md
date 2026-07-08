@@ -52,7 +52,19 @@ Builder and Maintainer are deliberately absent from the knowledge-work set. In a
 
 ## Installation
 
-### Claude Code subagents
+### As a plugin (recommended)
+
+The repo doubles as a Claude Code plugin marketplace with two plugins:
+
+```
+/plugin marketplace add mfreidlitz/claude-agent-archetypes
+/plugin install code-archetypes@claude-agent-archetypes
+/plugin install knowledge-archetypes@claude-agent-archetypes
+```
+
+`code-archetypes` installs all five software subagents; `knowledge-archetypes` installs the three knowledge-work agents. They are separate plugins because three archetype names exist in both sets. Run `/agents` to confirm.
+
+### Manual copy (per-project)
 
 Copy the five files into your repository's agent directory:
 

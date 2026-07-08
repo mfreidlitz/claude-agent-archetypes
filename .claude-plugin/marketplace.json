@@ -1,0 +1,33 @@
+{
+  "name": "claude-agent-archetypes",
+  "owner": {
+    "name": "Michael Freidlitz"
+  },
+  "description": "Boris Cherny's five product-engineering archetypes as ready-to-use Claude agents",
+  "plugins": [
+    {
+      "name": "code-archetypes",
+      "source": "./",
+      "description": "All five archetypes (Prototyper, Builder, Sweeper, Grower, Maintainer) as Claude Code subagents for software work",
+      "author": {
+        "name": "Michael Freidlitz"
+      },
+      "license": "MIT",
+      "keywords": ["archetypes", "subagents", "claude-code"],
+      "agents": ["./code-agents/"],
+      "strict": false
+    },
+    {
+      "name": "knowledge-archetypes",
+      "source": "./",
+      "description": "Prototyper, Sweeper, and Grower as agents for knowledge work (content, systems, funnels); Builder and Maintainer deliberately excluded, see README",
+      "author": {
+        "name": "Michael Freidlitz"
+      },
+      "license": "MIT",
+      "keywords": ["archetypes", "subagents", "knowledge-work"],
+      "agents": ["./knowledge-agents/"],
+      "strict": false
+    }
+  ]
+}
