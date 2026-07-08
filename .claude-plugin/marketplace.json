@@ -14,7 +14,13 @@
       },
       "license": "MIT",
       "keywords": ["archetypes", "subagents", "claude-code"],
-      "agents": ["./code-agents/"],
+      "agents": [
+        "./code-agents/prototyper.md",
+        "./code-agents/builder.md",
+        "./code-agents/sweeper.md",
+        "./code-agents/grower.md",
+        "./code-agents/maintainer.md"
+      ],
       "strict": false
     },
     {
@@ -26,7 +32,11 @@
       },
       "license": "MIT",
       "keywords": ["archetypes", "subagents", "knowledge-work"],
-      "agents": ["./knowledge-agents/"],
+      "agents": [
+        "./knowledge-agents/prototyper.md",
+        "./knowledge-agents/sweeper.md",
+        "./knowledge-agents/grower.md"
+      ],
       "strict": false
     }
   ]
