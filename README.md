@@ -55,6 +55,7 @@ scripts/
   spike.py            create/list/reap throwaway spike worktrees with a gate-exemption marker
   churn_report.py     git-history evidence (stale files, low-churn heavyweights) for the Sweeper
 docs/templates/       output-artifact format templates (Prototyper, Sweeper, Grower, Maintainer)
+docs/evals/           manual boundary-behavior scenarios, one per code archetype
 ```
 
 ### Why only three knowledge-work agents?
@@ -164,6 +165,16 @@ The agents ship stack-agnostic. Per project, tighten three things:
 3. **Performance budgets.** Sweeper and Maintainer work best against explicit numbers. If you have none, their first useful output is proposing some.
 
 Tool allowlists in each agent's frontmatter are deliberately minimal per archetype (the knowledge-work Prototyper and Grower, for instance, get no Edit access: they propose, they don't modify). Widen them consciously, not by default.
+
+## Verification and contributing
+
+The discipline each archetype promises is checkable, not just described:
+
+- **Output templates** in `docs/templates/` fix the shape of each agent's deliverable (spike findings, unship-list, experiment, health check). Each agent file points at its template.
+- **Eval scenarios** in `docs/evals/` are a manual protocol: one boundary-behavior scenario per code archetype, each testing that the agent refuses the out-of-bounds action and routes to the correct alternative. `docs/evals/README.md` has the pass/fail rubric.
+- **CI** (`.github/scripts/validate_agents.py`) enforces the agent contracts on every push: unique names, tool-allowlist policy (the knowledge Prototyper and Grower stay Edit/Write-free), a boundary marker in each agent body, and that the marketplace paths resolve.
+
+See [`CONTRIBUTING.md`](CONTRIBUTING.md) for what makes a good agent change, when tool allowlists may widen, how new archetype proposals are judged, and the release process. Changes are tracked in [`CHANGELOG.md`](CHANGELOG.md).
 
 ## License
 
