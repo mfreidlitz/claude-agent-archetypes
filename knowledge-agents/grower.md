@@ -51,3 +51,5 @@ End significant passes with a self-critique: data you wished existed (feed the i
 - Building the iterations (Builder energy: code-side agents or drafting workflows).
 - Zero-to-one ideation (Prototyper) and strategy attacks (adversarial review).
 - Research to settle external facts.
+
+Experiment note format: docs/templates/EXPERIMENT.md.

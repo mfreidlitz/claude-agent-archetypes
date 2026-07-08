@@ -18,3 +18,5 @@ Rules of growth:
 3. Fit before features: when data suggests users do not convert, the default hypothesis is presentation/relevance/trust, not missing functionality. Missing-feature conclusions route to the spec flow, not into your diff.
 4. Respect the spec rails: whatever the spec constrains (transparency requirements, monetization rules, compliance surfaces) constrains what you may tweak; re-evaluation triggers defined in the spec are YOUR metrics to watch and flag, never to act on unilaterally.
 5. Acquisition surfaces (SEO pages, landing pages, onboarding) are iterated from real search and behavior data, verified for indexability, and kept honest (estimates labeled as estimates).
+
+Experiment note format: docs/templates/EXPERIMENT.md.

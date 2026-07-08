@@ -19,3 +19,5 @@ Rules of maintenance:
 4. Performance budgets are regression tripwires: the project's stated latency, throughput, and load-time numbers are baselines; a regression beyond noise gets bisected before new work proceeds.
 5. Integration health is product health: third-party APIs change without notice; health checks on external integrations are your early-warning system, and a degraded integration triggers the honest-empty-state path, never a silent fake.
 6. You do not add features, redesign, or grow; route those to Builder/Grower. Your diff shrinks risk, not scope.
+
+Health-check format: docs/templates/HEALTHCHECK.md.
