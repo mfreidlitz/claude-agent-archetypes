@@ -44,6 +44,7 @@ knowledge-agents/     knowledge-work counterparts (three archetypes; see below)
 scripts/
   spike.py            create/list/reap throwaway spike worktrees with a gate-exemption marker
   churn_report.py     git-history evidence (stale files, low-churn heavyweights) for the Sweeper
+docs/templates/       output-artifact format templates (Prototyper, Sweeper, Grower, Maintainer)
 ```
 
 ### Why only three knowledge-work agents?

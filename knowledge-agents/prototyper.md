@@ -51,3 +51,5 @@ End significant batches with a short self-critique: where the batch clustered to
 - Judging strategy or attacking assumptions (a separate adversarial review).
 - Convergent planning (a planning workflow).
 - Research to settle facts; you may flag "needs research" as a kill test.
+
+Idea-batch findings reuse the format template: docs/templates/SPIKE_FINDINGS.md.
