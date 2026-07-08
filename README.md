@@ -52,34 +52,37 @@ Builder and Maintainer are deliberately absent from the knowledge-work set. In a
 
 ## Installation
 
-### As a plugin (recommended)
+The repo doubles as a Claude Code plugin marketplace with two plugins: `code-archetypes` (all five software subagents) and `knowledge-archetypes` (the three knowledge-work agents). They are separate plugins because three archetype names exist in both sets.
 
-The repo doubles as a Claude Code plugin marketplace with two plugins:
+### Claude Code
+
+Install as a plugin (recommended):
 
 ```
 /plugin marketplace add mfreidlitz/claude-agent-archetypes
 /plugin install code-archetypes@claude-agent-archetypes
+```
+
+`code-archetypes` is the primary install for software work. Add `knowledge-archetypes` too if you dispatch non-code work (research, content, analysis) from Code:
+
+```
 /plugin install knowledge-archetypes@claude-agent-archetypes
 ```
 
-`code-archetypes` installs all five software subagents; `knowledge-archetypes` installs the three knowledge-work agents. They are separate plugins because three archetype names exist in both sets. Run `/agents` to confirm.
+Run `/agents` to confirm. Invoke the agents by describing the task ("spike whether the API supports X", "run a sweep pass on the module") or by explicit dispatch.
 
-Which plugin goes where: in Claude Code, `code-archetypes` is the primary install; add `knowledge-archetypes` too if you dispatch non-code work (research, content, analysis) from Code. In Claude Cowork, `knowledge-archetypes` is the one you want; install it through Cowork's plugin management, or use the three markdown files directly as agent definitions.
-
-### Manual copy (per-project)
-
-Copy the five files into your repository's agent directory:
+Alternatively, copy the files into a single repository for a per-project install without the plugin system:
 
 ```bash
 mkdir -p .claude/agents
 cp code-agents/*.md .claude/agents/
 ```
 
-Open Claude Code in the repo and run `/agents` to confirm all five are listed. Invoke them by describing the task ("spike whether the API supports X", "run a sweep pass on the module") or by explicit dispatch.
+### Claude Cowork
 
-### Knowledge-work agents
+`knowledge-archetypes` is the one you want in Cowork. Install it through Cowork's plugin management (Settings > Capabilities), or use the three markdown files in `knowledge-agents/` directly as agent definitions in your own plugin. Adapt the context-loading instructions to point at your own project files.
 
-The three markdown files use the same agent-definition format and work as Claude Code subagents, as plugin agents in Claude Cowork, or as pasted personas in any Claude conversation. Adapt the context-loading instructions to point at your own project files.
+The knowledge-work agents also work as pasted personas in any Claude conversation, no installation required.
 
 ### Scripts
 
