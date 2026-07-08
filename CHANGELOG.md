@@ -24,3 +24,6 @@ Initial release, versioned retroactively as shipped.
 - Three knowledge-work counterparts: Prototyper, Sweeper, Grower.
 - `scripts/spike.py` and `scripts/churn_report.py`.
 - Plugin marketplace with `code-archetypes` and `knowledge-archetypes`.
+
+[1.1.0]: https://github.com/mfreidlitz/claude-agent-archetypes/compare/v1.0.0...v1.1.0
+[1.0.0]: https://github.com/mfreidlitz/claude-agent-archetypes/releases/tag/v1.0.0
